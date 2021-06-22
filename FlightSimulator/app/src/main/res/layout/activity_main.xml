@@ -5,10 +5,13 @@
         <variable
             name="viewModel"
             type="com.example.flightsimulator.ViewModel" />
+        <variable
+            name="view"
+            type="com.example.flightsimulator.MainActivity" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,64 +29,57 @@
                 android:id="@+id/ip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="192.168.1.102"
+                android:digits="0123456789."
                 android:hint="Ip Adrress"
-                android:afterTextChanged="@{(editable)->viewModel.ipUpdate(editable)}"
                 android:textAlignment="center"/>
             <EditText
                 android:id="@+id/port"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="6400"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:afterTextChanged="@{(editable)->viewModel.portUpdate(editable)}"
                 android:hint="Port"/>
             <Button
                 android:id="@+id/connect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Connect"
-                android:onClick="@{()-> viewModel.modelConnect()}"
-                android:gravity="center"/>
+                android:onClick="Connect"
+                android:gravity="center" />
         </LinearLayout>
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="10dp" />
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             android:orientation="vertical"
-            android:gravity="center"
+            android:layout_gravity="center"
             >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <FrameLayout
-                    android:layout_width="32dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <SeekBar
                         android:id="@+id/throttleSeekbar"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="255dp"
+                        android:layout_height="250dp"
                         android:layout_gravity="center"
-                        android:rotation="270"
-                        android:min="0"
                         android:max="100"
-                        android:onProgressChanged="@{viewModel.onThrValueChanged}"
-                        />
-
-
+                        android:min="0"
+                        android:onProgressChanged="@{viewModel::onThrValueChanged}"
+                        android:rotation="270" />
                 </FrameLayout>
                 <FrameLayout
+                    android:id="@+id/joystick_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:background="@drawable/joystickpanel_view">
                     <com.example.flightsimulator.Joystick
                         android:id="@+id/joystick"
@@ -92,6 +88,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/circle"/>
                 </FrameLayout>
+
             </LinearLayout>
             <SeekBar
                 android:id="@+id/rudderSeekbar"
@@ -102,7 +99,7 @@
                 android:min="-100"
                 android:max="100"
                 android:progress="0"
-                android:onProgressChanged="@{viewModel.onRudValueChanged}"
+                android:onProgressChanged="@{viewModel::onRudValueChanged}"
                 />
         </LinearLayout>
     </LinearLayout>

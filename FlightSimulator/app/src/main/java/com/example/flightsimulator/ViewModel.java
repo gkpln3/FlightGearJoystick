@@ -6,47 +6,21 @@ import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.google.android.material.slider.Slider;
 
 public class ViewModel extends BaseObservable implements Joystick.JoystickListener {
 
     private model model;
-//    private int thr;
 
-//    public int getThr() {
-////        Log.e("viewmodel",Integer.toString(thr));
-//        return (int)(model.getThr()*100);
-//    }
-//
-//    public void setThr(int thr) {
-//        Log.e("viewmodel",Integer.toString(thr));
-//        model.setThr((double)thr / 100);//in the seekbar its by percents and in the model - its 0 to 1.
-//    }
-
-
-    //    public int getRud() {
-////        Log.e("viewmodel",Integer.toString(thr));
-//        double rud = model.getRud();
-//        rud++;
-//        rud = rud /2;
-//        rud = rud * 100;
-//        return (int)rud;
-//    }
-//
-//    public void setRud(int rud) {
-////        Log.e("viewmodel",Integer.toString(rud));
-//        double ret = (double) rud /100;
-//        ret = ret * 2;
-//        ret --;
-//        model.setRud(ret);
-//    }
     public void onRudValueChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
         int seekBarValue = seekBar.getProgress();
         double ret = (double) seekBarValue /100;
-        ret = ret * 2;
-        ret --;
+      //  ret = ret * 2;
+        //ret --;
         model.setRud(ret);
+
     }
     public void onThrValueChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
 
@@ -57,17 +31,18 @@ public class ViewModel extends BaseObservable implements Joystick.JoystickListen
         model = model.getInstance();
     }
 
-    public void ipUpdate(CharSequence s) {
-        String ip = s.toString();
-        model.setIp(ip);
-    }
-    public void portUpdate(CharSequence s) {
+//    public void ipUpdate(CharSequence s) {
+//        String ip = s.toString();
+//        model.setIp(ip);
+//    }
+//    public void portUpdate(CharSequence s) {
+//
+//        int port =  Integer.parseInt(s.toString());
+//        model.setPort(port);
+//    }
+    public boolean modelConnect(String ip,int port) {
+        return model.connect(ip,port);
 
-        int port =  Integer.parseInt(s.toString());
-        model.setPort(port);
-    }
-    public void modelConnect() {
-        model.connect();
     }
 
     @Override

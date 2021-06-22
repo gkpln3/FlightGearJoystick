@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,8 +48,8 @@ public class Joystick extends View implements View.OnTouchListener   {
     }
 
     public void init(){
-        centerX = getWidth() / 2;
-        centerY = getHeight() / 2;
+        centerX = this.getX();
+        centerY = this .getY();
         setOnTouchListener(this);
     }
 
