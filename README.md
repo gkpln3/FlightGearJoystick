@@ -23,6 +23,7 @@ The project is designed with the **MVVM** design pattern.
 [Link] https://www.flightgear.org/
 
 ## Video
+coming soon
 
 ## Class diagram:
 [Link] https://i.ibb.co/gvghKGm/Main.jpg
