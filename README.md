@@ -24,4 +24,5 @@ The project is designed with the **MVVM** design pattern.
 
 ## Video
 
-## Flow Chart
+## Class diagram:
+[Link] https://i.ibb.co/gvghKGm/Main.jpg
