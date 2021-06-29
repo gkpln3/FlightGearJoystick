@@ -17,11 +17,13 @@ import com.google.android.material.slider.Slider;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Model model;
     private ViewModel vm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vm = new ViewModel();
+        model = new Model();
+        vm = new ViewModel(model);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setViewModel(vm);
         activityMainBinding.executePendingBindings();

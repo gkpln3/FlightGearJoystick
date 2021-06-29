@@ -55,46 +55,46 @@ public class Joystick extends View implements View.OnTouchListener   {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    _xDelta = v.getX() - event.getRawX();
-                    _yDelta = v.getY() - event.getRawY();
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    float x = (float) (centerX + (event.getRawX() + _xDelta - centerX) * 0.5);
-                    float y = (float) (centerY + (event.getRawY() + _yDelta - centerY) * 0.5);
-                    if (x > centerX * 2 + 10) {
-                        x = centerX * 2 + 10;
-                    } else if (x < 0) {
-                        x = 0;
-                    }
-                    if (y < 0) {
-                        y = 0;
-                    } else if (y > centerY * 2) {
-                        y = centerY * 2;
-                    }
-                    v.animate()
-                            .x(x)
-                            .y(y)
-                            .setDuration(0)
-                            .start();
-                    for(JoystickListener jm : listeners){
-                        jm.onJoystickMoved(x,y);
-                    }
-                    break;
-                case MotionEvent.ACTION_UP:
-                    v.animate()
-                            .x(centerX)
-                            .y(centerY)
-                            .setDuration(100)
-                            .start();
-                    for(JoystickListener jm : listeners){
-                        jm.onJoystickMoved(centerX,centerY);
-                    }
-                    break;
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                _xDelta = v.getX() - event.getRawX();
+                _yDelta = v.getY() - event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float x = (float) (centerX + (event.getRawX() + _xDelta - centerX) * 0.5);
+                float y = (float) (centerY + (event.getRawY() + _yDelta - centerY) * 0.5);
+                if (x > centerX * 2 + 10) {
+                    x = centerX * 2 + 10;
+                } else if (x < 0) {
+                    x = 0;
+                }
+                if (y < 0) {
+                    y = 0;
+                } else if (y > centerY * 2) {
+                    y = centerY * 2;
+                }
+                v.animate()
+                        .x(x)
+                        .y(y)
+                        .setDuration(0)
+                        .start();
+                for(JoystickListener jm : listeners){
+                    jm.onJoystickMoved(x,y);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                v.animate()
+                        .x(centerX)
+                        .y(centerY)
+                        .setDuration(100)
+                        .start();
+                for(JoystickListener jm : listeners){
+                    jm.onJoystickMoved(centerX,centerY);
+                }
+                break;
 
-                default:
-            }
+            default:
+        }
         return true;
     }
 

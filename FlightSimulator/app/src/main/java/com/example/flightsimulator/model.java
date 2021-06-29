@@ -11,8 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class model {
-    private static model instance = null;
+public class Model {
 //    private String Ip ;
 //    private int port;
     private Socket fg;
@@ -22,7 +21,7 @@ public class model {
     private ExecutorService executor;
     private  PrintWriter out;
 
-    private model(){
+    private Model(){
 //        port = -1;
 //        Ip = "";
         fg = null;
@@ -30,13 +29,6 @@ public class model {
 //        rud = -1;
         executor = null;
         out = null;
-    }
-    public static model getInstance()
-    {
-        if (instance == null)
-            instance = new model();
-
-        return instance;
     }
 
 //    public void setIp(String ip) { this.Ip = ip; }

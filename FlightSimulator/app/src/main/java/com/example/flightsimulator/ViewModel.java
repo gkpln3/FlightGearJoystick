@@ -12,7 +12,7 @@ import com.google.android.material.slider.Slider;
 
 public class ViewModel extends BaseObservable implements Joystick.JoystickListener {
 
-    private model model;
+    private Model model;
 
     public void onRudValueChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
         int seekBarValue = seekBar.getProgress();
@@ -27,8 +27,8 @@ public class ViewModel extends BaseObservable implements Joystick.JoystickListen
         int seekBarValue = seekBar.getProgress();
         model.setThr((double)seekBarValue / 100);
     }
-    public ViewModel(){
-        model = model.getInstance();
+    public ViewModel(Model model){
+        this.model = model;
     }
 
 //    public void ipUpdate(CharSequence s) {
